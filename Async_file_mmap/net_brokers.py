@@ -97,7 +97,7 @@ async def to_elk(client, ft_packets, fichier_init):
 # Preprocessing functions (data cleaning), at end data is stored in dossier repertory (Phase 1) 
 async def process_file(file_path, fichier_init):
         try:
-            jq = await asyncio.create_subprocess_exec("./script_async.sh",f"{fichier_init}", stdout=subprocess.PIPE)
+            jq = await asyncio.create_subprocess_exec("./async_clean.sh",f"{fichier_init}", stdout=subprocess.PIPE)
             output, error = await jq.communicate()
             if error:
                 logging.warning(f" {fichier_init} jq filter failed")
